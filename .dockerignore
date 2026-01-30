@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+build
+.git
+.github
+.serena
+cache
+*.md
+.DS_Store
+.env*
+npm-debug.log*

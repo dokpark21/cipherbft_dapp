@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CipherBFT DApp
+
+A decentralized application built with Next.js 16, React 19, and Web3 libraries (wagmi, viem). It features 3D rendering powered by React Three Fiber and state management via Zustand.
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **UI**: React 19, Tailwind CSS
+- **Web3**: wagmi, viem
+- **3D**: React Three Fiber, Drei
+- **State**: Zustand, TanStack React Query
+
+## Prerequisites
+
+- Node.js 22+
+- npm
+- Docker (optional, for containerized deployment)
 
 ## Getting Started
 
-First, run the development server:
+### Local Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Docker
 
-To learn more about Next.js, take a look at the following resources:
+### Build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+docker build -t cipherbft-dapp .
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Run
 
-## Deploy on Vercel
+```bash
+docker run -p 3000:3000 cipherbft-dapp
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To run in the background:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+docker run -d --name cipherbft -p 3000:3000 cipherbft-dapp
+```
+
+### Environment Variables
+
+Pass environment variables using `-e` flags or an env file:
+
+```bash
+# Inline
+docker run -p 3000:3000 -e NEXT_PUBLIC_API_URL=https://api.example.com cipherbft-dapp
+
+# From file
+docker run -p 3000:3000 --env-file .env cipherbft-dapp
+```
+
+### Stop & Remove
+
+```bash
+docker stop cipherbft
+docker rm cipherbft
+```
+
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start development server |
+| `npm run build` | Create production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
