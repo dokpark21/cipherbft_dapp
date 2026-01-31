@@ -4,7 +4,7 @@ import { privateKeyToAccount } from 'viem/accounts'
 
 // Custom CipherBFT chain definition
 export const cipherBFT = defineChain({
-  id: 31337,
+  id: 85300,
   name: 'CipherBFT',
   nativeCurrency: {
     decimals: 18,
@@ -13,40 +13,37 @@ export const cipherBFT = defineChain({
   },
   rpcUrls: {
     default: {
-      http: ['http://127.0.0.1:8545'],
+      http: ['/api/rpc'],
     },
-  },
-  blockExplorers: {
-    default: { name: 'CipherScan', url: 'http://localhost:4000' },
   },
 })
 
 // Private key account for auto-signing
-const PRIVATE_KEY = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80' as const
+const PRIVATE_KEY = '0x7c852118294e51e653712a81e05800f419141751be58f605c371e15141b007a6' as const
 export const account = privateKeyToAccount(PRIVATE_KEY)
 
 // Public client for reading
 export const publicClient = createPublicClient({
   chain: cipherBFT,
-  transport: http('http://127.0.0.1:8545'),
+  transport: http('/api/rpc'),
 })
 
 // Wallet client for writing (auto-sign with private key)
 export const walletClient = createWalletClient({
   account,
   chain: cipherBFT,
-  transport: http('http://127.0.0.1:8545'),
+  transport: http('/api/rpc'),
 })
 
 export const config = createConfig({
   chains: [cipherBFT],
   transports: {
-    [cipherBFT.id]: http('http://127.0.0.1:8545'),
+    [cipherBFT.id]: http('/api/rpc'),
   },
 })
 
 // Contract configuration
-export const GAME_CONTRACT_ADDRESS = '0x5FbDB2315678afecb367f032d93F642f64180aa3' as const
+export const GAME_CONTRACT_ADDRESS = '0x057ef64E23666F000b34aE31332854aCBd1c8544' as const
 
 export const GAME_CONTRACT_ABI = [
   {

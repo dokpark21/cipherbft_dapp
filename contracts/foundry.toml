@@ -6,3 +6,4 @@ solc = "0.8.20"
 
 [rpc_endpoints]
 localhost = "http://127.0.0.1:8545"
+cipherbft = "https://rpc.cipherbft.xyz/"

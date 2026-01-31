@@ -181,7 +181,7 @@ export function useBlockchain() {
   return {
     isConnected,
     address: account.address,
-    chainId: 31337,
+    chainId: 85300,
     mockMode,
     metrics,
     recordMove,
